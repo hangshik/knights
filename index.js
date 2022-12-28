@@ -24,18 +24,46 @@ function success(){
     re.textContent ="축하합니다. 성공하였습니다."
   } else {
     if(success_ck){
-      re.textContent ="게임중입니다."
+      re.textContent ="게임중입니다. 녹색을 선택하여 이동하십시오."
     } else {
-      re.textContent ="실패하였습니다. 시작을 클릭하여 다시 시작하십시오."
+      re.textContent ="더 이상 갈 곳이 없습니다. 빨간색을 선택하여 되돌아 가거나, 시작을 클릭하여 다시 시작하십시오."
     }
   }
 }
 
 function clickbt(lo1, lo2) {
+  
+  if(lo1==last_x && lo2==last_y  &&list_number[lo1+lo2*b2]!="1"){
+    list[lo1+lo2*b2]=(list[lo1+lo2*b2]+1)%2;
+    list_number[lo1+lo2*b2]="0";
+
+    const element1 = document.getElementById(lo1+lo2*b2);
+    element1.innerText = "";
+
+    let last_number1=list_number.indexOf(number-2);
+    lo2=parseInt(last_number1/b2);
+    lo1=last_number1%b2;
+
+    let last_number2=list_number.indexOf(number-3);
+    last_y=parseInt(last_number2/b2);
+    last_x=last_number2%b2;
+    number--;
+    number--;
+
+    const element = document.getElementById(lo1+lo2*b2);
+    element.innerText = number;
+    list_number[lo1+lo2*b2] = number;
+    number++;
+    bg(lo1,lo2);
+    last_x=lo1;
+    last_y=lo2;
+  }
+
   if((last_x+last_y==-2 || (((last_x-lo1)**2 + (last_y-lo2)**2)==5))&& list[lo1+lo2*b2]==0 ){
     list[lo1+lo2*b2]=(list[lo1+lo2*b2]+1)%2;
     const element = document.getElementById(lo1+lo2*b2);
     element.innerText = number;
+    list_number[lo1+lo2*b2] = number;
     number++;
     bg(lo1,lo2);
     last_x=lo1;
@@ -45,7 +73,8 @@ function clickbt(lo1, lo2) {
 }
 
 function main(a1, a2) {
-  list=[]  
+  list=[];
+  list_number=[];
   count=1;
   number = 1;
   last_x = -1;
