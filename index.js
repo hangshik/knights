@@ -32,8 +32,11 @@ function success(){
 }
 
 function clickbt(lo1, lo2) {
-  
-  if(lo1==last_x && lo2==last_y  &&list_number[lo1+lo2*b2]!="1"){
+  if(lo1==last_x && lo2==last_y){
+    if(list_number[lo1+lo2*b2]=="1"){
+      window.location.reload();
+    }
+    
     list[lo1+lo2*b2]=(list[lo1+lo2*b2]+1)%2;
     list_number[lo1+lo2*b2]="0";
 
@@ -57,6 +60,7 @@ function clickbt(lo1, lo2) {
     bg(lo1,lo2);
     last_x=lo1;
     last_y=lo2;
+    
   }
 
   if((last_x+last_y==-2 || (((last_x-lo1)**2 + (last_y-lo2)**2)==5))&& list[lo1+lo2*b2]==0 ){
