@@ -1,3 +1,12 @@
+// 화명 해상도 크기 구함
+function getDisplayInfo() {
+  var size = {
+    width: window.innerWidth || document.body.clientWidth,
+    height: window.innerHeight || document.body.clientHeight
+  }
+  return size;
+}
+
 function bg(bl1,bl2) {
   success_ck=false;
   for(i=0;i<b1*b2;i++){
@@ -86,20 +95,22 @@ function main(a1, a2) {
   let tag = "<div class='container'>";
     b1 = parseInt(a1);
     b2 = parseInt(a2);
-    for (j = 0; j < b1; j++) {
+    var size = getDisplayInfo();
+    s = Math.min((size.width-15*b2)/b2,60);
+    for (j = 0; j < b1; j++) {30  
       tag += "<div class='row'>";
       for (i = 0; i < b2; i++) {
         list.push(0);
-        tag += "<div class='column' id='"+(i+j*b2)+"' onclick='clickbt("+i+","+j+")'></div>";
+        tag += "<div class='column' id='"+(i+j*b2)+"' style=width:"+s+"px;height:"+s+"px; onclick='clickbt("+i+","+j+")'></div>";
       }
       tag += "</div>";
     }
     tag += "</div>";
     area.innerHTML = tag;
-
+    console.log=tag;
     document.getElementById("result").textContent = "네모칸을 선택하여 게임을 시작하십시오.";
   }
 
-  onload = () => {
-    main(txt1.value, txt2.value)
-  }
+onload = () => {
+  main(txt1.value, txt2.value)
+}
