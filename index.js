@@ -97,11 +97,13 @@ function main(a1, a2) {
     b2 = parseInt(a2);
     var size = getDisplayInfo();
     s = Math.min((size.width-15*b2)/b2,60);
+    t = Math.min(Math.max((30-0.5*Math.max(b1,b2)),10),50);
+    
     for (j = 0; j < b1; j++) {30  
       tag += "<div class='row'>";
       for (i = 0; i < b2; i++) {
         list.push(0);
-        tag += "<div class='column' id='"+(i+j*b2)+"' style=width:"+s+"px;height:"+s+"px; onclick='clickbt("+i+","+j+")'></div>";
+        tag += "<div class='column' id='"+(i+j*b2)+"' style=font-size:"+t+"px;width:"+s+"px;height:"+s+"px; onclick='clickbt("+i+","+j+")'></div>";
       }
       tag += "</div>";
     }
@@ -109,6 +111,7 @@ function main(a1, a2) {
     area.innerHTML = tag;
     console.log=tag;
     document.getElementById("result").textContent = "네모칸을 선택하여 게임을 시작하십시오.";
+
   }
 
 onload = () => {
