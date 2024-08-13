@@ -97,7 +97,7 @@ function main(a1, a2) {
     b2 = parseInt(a2);
     var size = getDisplayInfo();
     s = Math.min((size.width-15*b2)/b2,60);
-    t = Math.min(Math.max((30-0.5*Math.max(b1,b2)),10),50);
+    t = Math.min(Math.max((30-0.3*Math.max(b1,b2)),10),30);
     
     for (j = 0; j < b1; j++) {30  
       tag += "<div class='row'>";
