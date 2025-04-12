@@ -1,3 +1,8 @@
+// 마우스 오른쪽 버튼 클릭 금지
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
 // 화명 해상도 크기 구함
 function getDisplayInfo() {
   var size = {
@@ -22,6 +27,8 @@ function bg(bl1,bl2) {
   }
   document.getElementById(bl1+bl2*b2).style.backgroundColor="red";
 }
+
+
 document.getElementById(0).style.backgroundColor="white";
 document.getElementById(3).style.backgroundColor="white";
 document.getElementById(12).style.backgroundColor="white";
@@ -91,6 +98,7 @@ function clickbt(lo1, lo2) {
 
 function main() {
   list=[1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1];
+  list_space=list;
   list_number=[];
   count=1;
   number = 1;
@@ -113,11 +121,10 @@ function main() {
     area.innerHTML = tag;
     console.log=tag;
 
-    document.getElementById(0).style.backgroundColor="white";
-    document.getElementById(3).style.backgroundColor="white";
-    document.getElementById(12).style.backgroundColor="white";
-    document.getElementById(15).style.backgroundColor="white";
-
+    for(i=0;i<b1*b2;i++)
+      if(list[i]==1)
+        document.getElementById(i).style.backgroundColor="white";
+    
     document.getElementById("result").textContent = "네모칸을 선택하여 게임을 시작하십시오.";
   }
 

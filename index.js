@@ -1,3 +1,8 @@
+// 마우스 오른쪽 버튼 클릭 금지
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
 // 화명 해상도 크기 구함
 function getDisplayInfo() {
   var size = {
